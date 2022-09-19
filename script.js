@@ -1,91 +1,39 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var lettersU = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
-var lettersL = [];
-for (let letter of lettersU) {
-  lettersL.push(letter.toLowerCase());
-}
-var symbols = [
-  "!",
-  "@",
-  "#",
-  "$",
-  "%",
-  "^",
-  "&",
-  "*",
-  "(",
-  ")",
-  "_",
-  "-",
-  "=",
-  "+",
-];
-var nums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-var options = [];
-options = options.concat(lettersL);
-options.concat(lettersU);
-options.concat(nums);
-options.concat(symbols);
-console.log(options, options.length);
+var lettersU = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
+var lettersL = ["abcdefghijklmnopqrstuvwxyz"];
+var symbols = ["!@#$%^&*()_+-="];
+var nums = ["1234567890"];
+var options = [""];
+var pass = "";
 
 function generatePassword() {
-  var charNum = prompt("How many characters between 8 and 128?");
+  var charNum = parseInt(prompt("How many characters between 8 and 128?"));
   if (charNum < 8 || charNum > 128) {
     alert("choose a value between 8 and 128");
     return;
   }
-
   var lower = confirm("Use lowercase?");
-  if (lower === true) {
-    options.push(lettersL);
+  if (lower) {
+    options += lettersL;
   }
   var upper = confirm("Use uppercase?");
-  if (upper === true) {
-    options.push(lettersU);
+  if (upper) {
+    options += lettersU;
   }
   var num = confirm("Use numbers?");
-  if (num === true) {
-    options.push(nums);
+  if (num) {
+    options += nums;
   }
   var characters = confirm("Use special characters?");
-  if (characters === true) {
-    options.push(symbols);
+  if (characters) {
+    options += symbols;
   }
-  for (var i = 0; i <= options; i++) {
-    var random = random + Math.floor(Math.random() * charNum);
-    // var pass = pass + options[random];
-
-    // return pass;
-    return random;
+  for (var i = 0; i < charNum; i++) {
+    var randomNumber = Math.floor(Math.random() * options.length);
+    pass = pass + options.substring(randomNumber, randomNumber + 1);
   }
+  return pass;
 }
 
 // Write password to the #password input
