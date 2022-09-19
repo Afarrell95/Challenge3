@@ -48,8 +48,12 @@ var symbols = [
   "=",
   "+",
 ];
-var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+var nums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 var options = [];
+options = options.concat(lettersL);
+options.concat(lettersU);
+options.concat(nums);
+options.concat(symbols);
 console.log(options, options.length);
 
 function generatePassword() {
@@ -62,27 +66,25 @@ function generatePassword() {
   var lower = confirm("Use lowercase?");
   if (lower === true) {
     options.push(lettersL);
-    options.concat(lettersL);
   }
   var upper = confirm("Use uppercase?");
   if (upper === true) {
     options.push(lettersU);
-    options.concat(lettersU);
   }
   var num = confirm("Use numbers?");
   if (num === true) {
     options.push(nums);
-    options.concat(nums);
   }
   var characters = confirm("Use special characters?");
   if (characters === true) {
     options.push(symbols);
-    options.concat(symbols);
   }
-  for (var i = 0; i <= charNum; i++) {
-    var random = Math.floor(Math.random() * options);
-    var pass = pass + options[random];
-    return pass;
+  for (var i = 0; i <= options; i++) {
+    var random = random + Math.floor(Math.random() * charNum);
+    // var pass = pass + options[random];
+
+    // return pass;
+    return random;
   }
 }
 
