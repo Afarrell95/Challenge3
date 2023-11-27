@@ -1,4 +1,4 @@
-# Challenge3!
+# Password Generator
 
 This project was to create a password generator using javascript. Upon clicking the generate button, the user will be prompted through a 
 series of options such as: password length, use lowercase letters, symbols, etc. After selecting their options, the site will generate a random password according
